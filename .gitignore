@@ -1,11 +1,14 @@
 # ==============================================================================
-# Git Ignore Configuration for project_gurgaon
+# Git Ignore Configuration for california-house-predictor
 # ==============================================================================
 
 # --- Python ---
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
+dist/
+build/
 .ipynb_checkpoints/
 
 # --- Virtual Environments ---
@@ -22,16 +25,26 @@ ENV/
 *.njsproj
 *.sln
 *.swp
+*.DS_Store
+Thumbs.db
 
 # --- Machine Learning Models & Pipelines ---
 # housing_model.pkl is ~144MB (exceeds GitHub's 100MB limit)
-housing_model.pkl
+models/housing_model.pkl
+models/housing_pipeline.pkl
 *.pkl
 
-# --- Temporary / Generated Data Files ---
-# input_data.csv and input_data - Copy.csv are generated during stratified split
-input_data.csv
-input_data - Copy.csv
+# --- Dataset (large raw data file) ---
+dataset/housing.csv
 
-# output_data.csv contains predictions output from inference
-output_data.csv
+# --- Generated / Logged Data ---
+test_cases/input_data.csv
+test_cases/output_data.csv
+test_cases/input_data - Copy.csv
+
+# --- Old / Temporary Training Scripts ---
+train model/housing_main.py
+train model/main_old.py
+
+# --- Streamlit Cache ---
+.streamlit/
