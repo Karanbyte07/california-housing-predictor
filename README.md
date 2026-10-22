@@ -106,6 +106,42 @@ Streamlit UI  ──POST /predict──►  FastAPI (app.py)
 
 ---
 
+## 📊 Model Input Parameters
+
+The prediction model expects the following 9 geographical and socio-economic features:
+
+| Parameter | Type | Description | Example / Allowed Values |
+|---|---|---|---|
+| `longitude` | `float` | East/West geographic coordinate | `-122.23` |
+| `latitude` | `float` | North/South geographic coordinate | `37.88` |
+| `housing_median_age` | `float` | Median age of houses in block group | `41.0` |
+| `total_rooms` | `float` | Total number of rooms in block group | `880.0` |
+| `total_bedrooms` | `float` | Total number of bedrooms in block group | `129.0` |
+| `population` | `float` | Total population residing in block group | `322.0` |
+| `households` | `float` | Total households (group residing in a home) | `126.0` |
+| `median_income` | `float` | Median income in tens of thousands of USD | `8.3252` (~$83,252) |
+| `ocean_proximity` | `string` | Location category relative to ocean/coast | `<1H OCEAN`, `INLAND`, `ISLAND`, `NEAR BAY`, `NEAR OCEAN` |
+
+<details>
+<summary><b>View Sample JSON Payload</b></summary>
+
+```json
+{
+  "longitude": -122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41.0,
+  "total_rooms": 880.0,
+  "total_bedrooms": 129.0,
+  "population": 322.0,
+  "households": 126.0,
+  "median_income": 8.3252,
+  "ocean_proximity": "NEAR BAY"
+}
+```
+</details>
+
+---
+
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
@@ -118,8 +154,6 @@ Streamlit UI  ──POST /predict──►  FastAPI (app.py)
 | Input Validation | Pydantic v2 |
 | Frontend UI | Streamlit |
 | Containerization | Docker · python:3.11-slim |
-
----
 
 ---
 
